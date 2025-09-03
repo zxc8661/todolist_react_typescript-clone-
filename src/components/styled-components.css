@@ -1,0 +1,191 @@
+/* **********TodoTemplate********** */
+.todo-template{
+    width: 512px;
+    height: 768px;
+
+    position: relative;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.04);
+    margin: 0 auto;
+    margin-top: 96px;
+    margin-bottom: 32px;
+    display: flex;
+    flex-direction: column;
+    color: #000;
+}
+
+/* **********TodoHead********** */
+
+.todo-headblock{
+    padding-top: 48px;
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #e9ecef;
+    text-align: left;
+    h1{
+        margin: 0;
+        font-size: 36px;
+        color: #343a40;
+    }
+    .day{
+        margin-top: 4px;
+        color: #868e96;
+        font-size: 21px;
+    }
+    .tasks-left{
+        color: #20c997;
+        font-size: 18px;
+        padding-top: 40px;
+        /* border-top: 1px solid #e9ecef; */
+        font-weight: bold;
+    }
+}
+
+/* **********TodoList********** */
+.todo-list{
+    flex: 1;
+    padding: 20px 32px;
+    padding-bottom: 48px;
+    overflow-y:auto;
+    background:gray;
+}
+
+
+/* **********TodoItem********** */
+.remove{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #dee2e6;
+    font-size : 24px;
+    cursor: pointer;
+    &hover{
+        color: #ff6b6b;
+
+    }
+    display:none;
+
+}
+
+.todo-itemblock{
+    display:flex;
+    align-items : center;
+    padding-top:12px;
+    padding-bottom:12px;
+    color:white;
+  
+}
+
+.todo-itemblock:hover .remove{
+    display:initial;
+}
+
+
+.checkCircle{
+    width: 32px;
+    height: 32px;
+    border-radius:16px;
+    border:1px solid #ced4da;
+    font-size: 24px;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.checkCircle.done{
+    border: 1px solid #38d9a9;
+    color: #38d9a9;
+}
+
+.text{
+    flex:1;
+    front-size: 21px;
+    color:#495057;
+
+}
+
+.text.done{
+    color:#ced4da;
+}
+
+/* **********TodoCreate********** */
+
+.todo-createButton{
+    background: #38d9a9;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    
+  z-index: 5;
+  cursor: pointer;
+  width: 80px;
+  height: 80px;
+  display: block;
+  align-items: center;
+  justify-content: center;
+  font-size: 60px;
+  position: absolute;
+  left: 50%;
+  bottom: 0px;
+  transform: translate(-50%, 50%);
+  color: white;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: 0.125s all ease-in;
+}
+
+.todo-createButton:hover{
+    background:#63e6be;
+}
+
+.todo-createButton:active{
+    background:#20c997;
+}
+
+.todo-createButton.open{
+    background:#38d9a9;
+    transform:translate(-50%, 50%) rotate(45deg);
+}
+
+
+.todo-createButton.open:hover{
+    background:#ff8787
+}
+
+.todo-createButton.open:active{
+    background:#fa5252;
+}
+
+
+/* 
+const InsertFormPositioner = styled.div`
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+`; */
+
+.insertFormPositioner{
+    width:100%;
+    bottom:0;
+    left:0;
+    position:absolute;
+}
+
+
+.insertForm{
+    background:#f8f9fa;
+    padding : 32px 32px 72px 32px;
+
+    border-botton-left-radius:16px;
+    border-botton-right-radius:16px;
+    border-top:1px solid #e9ecef;
+}
