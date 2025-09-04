@@ -18,13 +18,13 @@ export default function TodoCreateButton(){
         {open &&(
             <div className="insertFormPositioner">
                 <div className="insertForm">
-                    <input placeholder="할일 입력후 enter를 누르세요"/>
+                    <input className="insertFormInput" placeholder="할일 입력후 enter를 누르세요" />
                 </div>
             </div>
         )}
         <button className={`todo-createButton ${open ? "open" : ""}`} onClick={onClick}>
           
-                {open  ? <MdClose style={{padding:0, margin:0}}/> : <MdAdd style={{padding:0, margin:0}}/>}
+                {open  ? <MdClose style={{padding:0, margin:0,fontSize :"50px"}}/> : <MdAdd style={{padding:0, margin:0,fontSize :"50px"}}/>}
         
         </button>
         </>
