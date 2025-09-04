@@ -23,7 +23,9 @@ export default function TodoCreateButton(){
             </div>
         )}
         <button className={`todo-createButton ${open ? "open" : ""}`} onClick={onClick}>
-            {open ? <MdClose/> : <MdAdd/>}
+          
+                {open  ? <MdClose style={{padding:0, margin:0}}/> : <MdAdd style={{padding:0, margin:0}}/>}
+        
         </button>
         </>
     )
