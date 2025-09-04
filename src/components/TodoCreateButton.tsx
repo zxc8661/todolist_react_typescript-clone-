@@ -1,7 +1,7 @@
-import React from "react";
+
 import "./styled-components.css";
 import  {useState}  from "react";
-import { FaPlus } from "react-icons/fa6";
+import { MdAdd, MdClose } from "react-icons/md";
 
 
 export default function TodoCreateButton(){
@@ -22,8 +22,8 @@ export default function TodoCreateButton(){
                 </div>
             </div>
         )}
-        <button className="todo-createButton" onClick={onClick}>
-            <FaPlus size={60} color="white"/>
+        <button className={`todo-createButton ${open ? "open" : ""}`} onClick={onClick}>
+            {open ? <MdClose/> : <MdAdd/>}
         </button>
         </>
     )
