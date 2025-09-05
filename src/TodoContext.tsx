@@ -1,4 +1,4 @@
-import React,{createContext} from 'react';
+import React,{createContext, useReducer} from 'react';
 
 
 interface TodoData{
@@ -33,7 +33,7 @@ const initialTodoData: Array<TodoData> = [
 let TodoIdCounter = 4;
 
 
- function createTodo(action:string, text?:string,id?:number):void{
+ function todoReducer(action:string, text?:string,id?:number):void{
 
     switch(action){
         case 'CREATE':
@@ -54,6 +54,17 @@ let TodoIdCounter = 4;
             })
             break;
         case 'REMOVE':
-            initialTodoData.filter(todo=>todo.id!==id);
-    }
+            //initialTodoData.filter(todo=>todo.id!==id); -> 새배열을 반환함으로 원본배열이 수정되지 않음 
+            const index = initialTodoData.findIndex(todo => todo.id === id);
+            if (index > -1) {
+                initialTodoData.splice(index, 1);
+            }
+            break;
+        default:
+            throw new Error("잘못된 요청");
+        }
+ }
+
+ export function TodoContext({children}:{childre: React.ReactNode}){
+    const [todoDate,setTodoData] = useReducer(todoReducer,initialTodoData)
  }
