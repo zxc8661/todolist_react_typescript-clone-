@@ -15,7 +15,10 @@ export default function TodoList(){
     return(
         <div className="todo-list">
             {todoData.map(todo =>(
-                <TodoItem done ={todo.done} text ={todo.text} onToggle={()=>{}} onRemove={()=>{}}/>
+                <TodoItem done ={todo.done} text ={todo.text} id={todo.id}
+                onToggle={()=>{}} 
+                onRemove={()=>{}}
+                />
             ))}
         </div>
     )
