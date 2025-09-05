@@ -58,7 +58,7 @@ let TodoIdCounter = 4;
             ]
         case 'TOGGLE':
             
-            return state.filter(todo=>todo.id!==action.id ? todo : {...todo,done: !todo.done})
+            return state.map(todo=>todo.id===action.id?{...todo,done: !todo.done}:todo)
             
         case 'REMOVE':
             //initialTodoData.filter(todo=>todo.id!==id); -> 새배열을 반환함으로 원본배열이 수정되지 않음 

@@ -12,17 +12,16 @@ type TodoItemProps = {
 }
 
 
-export default function TodoItem({done, text, onToggle, onRemove,id}: TodoItemProps){
-    const dispatch = useTodoDispatch();
+export default function TodoItem({done, text, onToggle, onRemove}: TodoItemProps){
     return(
         <div className="todo-itemblock">
-            <div className="checkCircle" onClick={()=>{dispatch({type:'TOGGLE',id:id})}}>
+            <div className="checkCircle" onClick={onToggle}>
                 {done && <i className="checkIcon">✓</i>}
             </div>
             <div className="text">
                 {text}
             </div>
-            <div className="remove" onClick={()=>{dispatch({type:'REMOVE',id:id})}}>
+            <div className="remove" onClick={onRemove}>
                 <MdDelete/>
             </div>
         </div>

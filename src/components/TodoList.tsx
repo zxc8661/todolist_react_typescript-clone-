@@ -11,13 +11,19 @@ import "./styled-components.css";
 export default function TodoList(){
     const dispatch = useTodoDispatch();
     const todoData = useTodo();
+    const onToggle = (id:number) => {
+        dispatch({type:'TOGGLE',id:id})
+    }
+    const onRemove = (id:number) => {
+        dispatch({type:'REMOVE',id:id})
+    }
 
     return(
         <div className="todo-list">
             {todoData.map(todo =>(
                 <TodoItem done ={todo.done} text ={todo.text} id={todo.id}
-                onToggle={()=>{}} 
-                onRemove={()=>{}}
+                onToggle={()=>onToggle(todo.id)}
+                onRemove={()=>onRemove(todo.id)}
                 />
             ))}
         </div>
