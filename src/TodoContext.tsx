@@ -1,4 +1,4 @@
- import React,{createContext, useReducer, useContext} from 'react';
+ import React,{createContext, useReducer, useContext, useEffect} from 'react';
 
 
 interface TodoData{
@@ -42,12 +42,17 @@ let TodoIdCounter = 4;
 
 
 
+function sortTodoData(state: TodoData[]):TodoData[]{
+    return state.sort((a,b) => Number(a.done)-Number(b.done) || Number(a.createdDate)-Number(b.createdDate));
+}
+
 
  function todoReducer(state: TodoData[],action:TodoAction):TodoData[]{
 
+    let newState:TodoData[];
     switch(action.type){
         case 'CREATE':
-            return [
+            newState = [
                 ...state,
                 {   
                     id:TodoIdCounter++,
@@ -56,23 +61,28 @@ let TodoIdCounter = 4;
                     createdDate: new Date()
                 }
             ]
+            break;
         case 'TOGGLE':
             
-            return state.map(todo=>todo.id===action.id?{...todo,done: !todo.done}:todo)
-            
+            newState = state.map(todo=>todo.id===action.id?{...todo,done: !todo.done}:todo)
+            break;
         case 'REMOVE':
             //initialTodoData.filter(todo=>todo.id!==id); -> 새배열을 반환함으로 원본배열이 수정되지 않음 
             let index = state.findIndex(todo=>todo.id===action.id);
-            return [...state.slice(0,index),...state.slice(index+1)]
-            
+            newState = [...state.slice(0,index),...state.slice(index+1)]
+        break;
         default:
             throw new Error("잘못된 요청");
-        }
+    }
+    return sortTodoData(newState);
+
+
  }
 
  export function TodoContext({children}:{children: React.ReactNode}){
     const [todoData,setTodoData] = useReducer(todoReducer,initialTodoData)
 
+ 
     return(
         <TodoStateContext.Provider value={todoData}>
             <TodoDispatchContext.Provider value={setTodoData}>

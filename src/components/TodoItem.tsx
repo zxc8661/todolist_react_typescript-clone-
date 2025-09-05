@@ -15,10 +15,10 @@ type TodoItemProps = {
 export default function TodoItem({done, text, onToggle, onRemove}: TodoItemProps){
     return(
         <div className="todo-itemblock">
-            <div className="checkCircle" onClick={onToggle}>
+            <div className={`checkCircle ${done ? "done" : ""}`} onClick={onToggle}>
                 {done && <i className="checkIcon">✓</i>}
             </div>
-            <div className="text">
+            <div className={`text ${done ? "done" : ""}`}>
                 {text}
             </div>
             <div className="remove" onClick={onRemove}>
